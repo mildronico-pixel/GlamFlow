@@ -1,0 +1,9 @@
+{
+  "name": "GlamFlow Booking System",
+  "description": "An all-in-one booking and management solution for salons, spas, clinics, and barbershops featuring a client-facing booking site and a real-time admin dashboard.",
+  "requestFramePermissions": [
+    "geolocation",
+    "microphone",
+    "camera"
+  ]
+}

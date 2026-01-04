@@ -1,0 +1,108 @@
+
+import React, { useState } from 'react';
+import { Phone, ArrowRight, Loader2, Smartphone, Heart, AlertCircle } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+interface ClientLoginProps {
+  onLogin: (phone: string, pin: string) => void;
+}
+
+const ClientLogin: React.FC<ClientLoginProps> = ({ onLogin }) => {
+  const [phone, setPhone] = useState('');
+  const [pin, setPin] = useState('');
+  const [loading, setLoading] = useState(false);
+  
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from || '/portal';
+  const isRedirectedFromBooking = location.state?.from === '/book';
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (phone.length < 10) return;
+    setLoading(true);
+    
+    // Simulate API call
+    setTimeout(() => {
+      onLogin(phone, pin);
+      setLoading(false);
+      // Redirect back to where they were going
+      navigate(from, { replace: true });
+    }, 1000);
+  };
+
+  return (
+    <div className="min-h-[calc(100vh-64px)] bg-[#f8f9fa] flex items-center justify-center p-4">
+      <div className="w-full max-w-md animate-in slide-in-from-bottom-8 duration-700">
+        <div className="bg-white rounded-[40px] border border-[#dadce0] p-10 lg:p-12 shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[#e8f0fe] rounded-full -translate-y-16 translate-x-16 -z-0"></div>
+          
+          <div className="flex flex-col items-center text-center space-y-8 relative z-10">
+            <div className="h-20 w-20 bg-[#fce8f3] rounded-[24px] flex items-center justify-center text-[#e91e63]">
+              <Heart className="h-10 w-10 fill-current" />
+            </div>
+            
+            <div>
+              <h2 className="text-3xl font-black text-[#202124] tracking-tight">Client Portal</h2>
+              <p className="text-sm text-[#5f6368] font-bold uppercase tracking-widest mt-2">
+                {isRedirectedFromBooking ? 'Sign in to book your service' : 'Manage your beauty journey'}
+              </p>
+            </div>
+
+            {isRedirectedFromBooking && (
+              <div className="bg-blue-50 text-blue-700 p-4 rounded-2xl flex items-center gap-3 text-sm font-bold border border-blue-100">
+                <AlertCircle className="h-5 w-5 shrink-0" />
+                <p className="text-left">Almost there! Please sign in with your phone number to continue your booking.</p>
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="w-full space-y-4">
+              <div className="space-y-2 text-left">
+                <label className="text-[10px] font-black uppercase text-[#5f6368] ml-2">Mobile Number</label>
+                <div className="relative">
+                   <input 
+                    type="tel"
+                    required
+                    autoFocus
+                    placeholder="0917 XXX XXXX"
+                    className="w-full p-4 bg-[#f1f3f4] border-none rounded-2xl font-bold outline-none focus:ring-2 ring-[#4285F4]/20 pl-12"
+                    value={phone}
+                    onChange={e => setPhone(e.target.value)}
+                  />
+                  <Smartphone className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-[#5f6368]" />
+                </div>
+              </div>
+              
+              <div className="space-y-2 text-left">
+                <label className="text-[10px] font-black uppercase text-[#5f6368] ml-2">PIN / Password (Optional)</label>
+                <input 
+                  type="password"
+                  placeholder="••••"
+                  className="w-full p-4 bg-[#f1f3f4] border-none rounded-2xl font-bold outline-none focus:ring-2 ring-[#4285F4]/20"
+                  value={pin}
+                  onChange={e => setPin(e.target.value)}
+                />
+              </div>
+
+              <button 
+                type="submit"
+                disabled={loading || phone.length < 10}
+                className="w-full bg-[#202124] text-white py-5 rounded-full font-black shadow-xl hover:bg-black hover:scale-[1.02] transition-all flex items-center justify-center gap-3 mt-4 disabled:opacity-30"
+              >
+                {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <ArrowRight className="h-5 w-5" />}
+                {isRedirectedFromBooking ? 'Sign In & Continue Booking' : 'Sign In to My Account'}
+              </button>
+            </form>
+            
+            <p className="text-xs text-[#5f6368] font-medium leading-relaxed">
+              Don't have an account yet? <br/>
+              <span className="text-[#4285F4] font-bold">Simply sign in</span> with your number and we'll create one for you.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ClientLogin;
