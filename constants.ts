@@ -32,7 +32,7 @@ export const SERVICES: Service[] = [
     duration: 30,
     price: 600,
     category: 'Nails',
-    image: 'https://images.unsplash.com/photo-1604654894610-df4906821603?auto=format&fit=crop&q=80&w=400'
+    image: 'https://images.unsplash.com/photo-1519014816548-bf5fe059e98b?auto=format&fit=crop&q=80&w=800'
   },
   {
     id: 's5',
@@ -48,7 +48,39 @@ export const SERVICES: Service[] = [
     duration: 90,
     price: 1800,
     category: 'Skincare',
-    image: 'https://images.unsplash.com/photo-1583001931036-6433ff85503d?auto=format&fit=crop&q=80&w=400'
+    image: 'https://images.unsplash.com/photo-1583001931096-959e9ad7b535?auto=format&fit=crop&q=80&w=800'
+  },
+  {
+    id: 's7',
+    name: 'Brazilian Blowout',
+    duration: 120,
+    price: 3500,
+    category: 'Hair',
+    image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=80&w=400'
+  },
+  {
+    id: 's8',
+    name: 'Gel Pedicure Spa',
+    duration: 60,
+    price: 950,
+    category: 'Nails',
+    image: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&q=80&w=400'
+  },
+  {
+    id: 's9',
+    name: 'Korean Glass Skin',
+    duration: 75,
+    price: 2500,
+    category: 'Skincare',
+    image: 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&q=80&w=400'
+  },
+  {
+    id: 's10',
+    name: 'Hot Stone Massage',
+    duration: 90,
+    price: 1600,
+    category: 'Spa',
+    image: 'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=400'
   }
 ];
 
@@ -98,7 +130,10 @@ export const FAQS = [
 export const STAFF: Staff[] = [
   { id: 'st1', name: 'Maria Santos', role: 'Senior Stylist', rating: 4.9, avatar: 'https://i.pravatar.cc/150?u=maria' },
   { id: 'st2', name: 'James Wilson', role: 'Massage Therapist', rating: 4.8, avatar: 'https://i.pravatar.cc/150?u=james' },
-  { id: 'st3', name: 'Elena Cruz', role: 'Skincare Specialist', rating: 5.0, avatar: 'https://i.pravatar.cc/150?u=elena' }
+  { id: 'st3', name: 'Elena Cruz', role: 'Skincare Specialist', rating: 5.0, avatar: 'https://i.pravatar.cc/150?u=elena' },
+  { id: 'st4', name: 'Rico Morales', role: 'Master Barber', rating: 4.7, avatar: 'https://i.pravatar.cc/150?u=rico' },
+  { id: 'st5', name: 'Sarah Lim', role: 'Nail Artist', rating: 4.9, avatar: 'https://i.pravatar.cc/150?u=sarah' },
+  { id: 'st6', name: 'Dr. Vicky B.', role: 'Dermatologist', rating: 5.0, avatar: 'https://i.pravatar.cc/150?u=vicky' }
 ];
 
 export const MOCK_APPOINTMENTS: Appointment[] = [

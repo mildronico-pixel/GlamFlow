@@ -39,6 +39,8 @@ export interface Appointment {
   totalAmount: number;
   createdAt: string;
   notified?: boolean;
+  rating?: number;
+  feedback?: string;
 }
 
 export interface SiteSettings {
@@ -60,6 +62,9 @@ export interface SiteSettings {
   bankName?: string;
   adminUsername?: string;
   adminPassword?: string;
+  isOnline?: boolean; // New field for maintenance mode
+  primaryColor?: string; // Main brand color (Buttons, Highlights)
+  secondaryColor?: string; // Secondary/Dark color (Text, Headers)
 }
 
 export interface DashboardStats {

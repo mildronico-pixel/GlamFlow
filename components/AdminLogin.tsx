@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
-import { Lock, ShieldCheck, ArrowRight, Loader2 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Lock, ShieldCheck, ArrowRight, Loader2, ArrowLeft } from 'lucide-react';
+import { useNavigate, Link } from 'react-router-dom';
 import { SiteSettings } from '../types';
 
 interface AdminLoginProps {
@@ -38,6 +38,11 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ settings, onLogin }) => {
     <div className="min-h-[calc(100vh-64px)] bg-[#f8f9fa] flex items-center justify-center p-4">
       <div className="w-full max-w-md animate-in zoom-in-95 duration-500">
         <div className="bg-white rounded-[40px] border border-[#dadce0] p-10 lg:p-12 shadow-2xl relative overflow-hidden">
+          {/* Back to Home Button */}
+          <Link to="/" className="absolute top-6 left-6 z-20 p-2 text-[#5f6368] hover:text-[#202124] hover:bg-[#f1f3f4] rounded-full transition-all">
+            <ArrowLeft className="h-5 w-5" />
+          </Link>
+          
           <div className="absolute top-0 left-0 w-full h-2 bg-[#4285F4]"></div>
           
           <div className="flex flex-col items-center text-center space-y-8">
